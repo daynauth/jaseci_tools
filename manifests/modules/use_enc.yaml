@@ -41,7 +41,7 @@ spec:
       containers:
         - name: js-use-enc
           imagePullPolicy: IfNotPresent
-          image: daynauth/use_enc
+          image: daynauth/use_enc:latest
           resources:
             requests:
               memory: "1Gi"

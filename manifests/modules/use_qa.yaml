@@ -41,7 +41,7 @@ spec:
       containers:
         - name: js-use-qa
           imagePullPolicy: IfNotPresent
-          image: daynauth/jaseci-use-qa:latest 
+          image: daynauth/use_qa:latest 
           resources:
             requests:
               memory: "1Gi"
