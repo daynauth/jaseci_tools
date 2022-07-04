@@ -1,1 +1,1 @@
-docker build -t jaseci-core -f Dockerfile.core .
+docker build -t daynauth/jaseci-core -f Dockerfile.core .

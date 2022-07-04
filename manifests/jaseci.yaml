@@ -80,7 +80,7 @@ spec:
           image: daynauth/jaseci-full:latest
           resources:
             requests:
-              memory: "350Mi"
+              memory: "1500Mi"
           imagePullPolicy: IfNotPresent
           command: [bash, -c, "source script/prod_up"]
           ports:
@@ -107,16 +107,10 @@ spec:
           volumeMounts:
             - name: prod-script
               mountPath: /script
-            - name: code
-              mountPath: /code
-
       volumes:
         - name: prod-script
           configMap:
             name: jaseci-up
-        - name: code
-          hostPath:
-            path: /home/roland/ML/jaseci-dev/sample_code
 ---
 apiVersion: v1
 kind: Secret

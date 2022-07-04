@@ -44,9 +44,7 @@ spec:
           image: daynauth/jaseci-use-qa:latest 
           resources:
             requests:
-              memory: "3Gi"
-            limits:
-              memory: "3Gi"
+              memory: "1Gi"
           command: [bash, -c, "source script/prod_up"]
           ports:
             - containerPort: 80

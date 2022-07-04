@@ -1,1 +1,1 @@
-docker build -f Dockerfile.kit . -t jaseci-kit
+docker build -f Dockerfile.kit . -t daynauth/jaseci-kit:latest

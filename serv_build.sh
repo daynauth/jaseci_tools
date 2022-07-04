@@ -1,1 +1,1 @@
-docker build -f Dockerfile.serv . -t jaseci-serv
+docker build -f Dockerfile.serv . -t daynauth/jaseci-serv
