@@ -10,5 +10,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python3-pip \
   && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/Jaseci-Labs/jaseci.git
+RUN git clone https://github.com/AshishMahendra/jaseci.git
 RUN cd jaseci/jaseci_core && sh install.sh  
