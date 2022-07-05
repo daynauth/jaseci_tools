@@ -40,7 +40,7 @@ spec:
         node-network: clarity3
       containers:
         - name: tfm-ner-local
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           image: daynauth/jaseci-kit:latest
           resources:
             requests:

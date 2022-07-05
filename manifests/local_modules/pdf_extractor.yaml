@@ -41,7 +41,7 @@ spec:
       containers:
         - name: pdf-extractor-local
           image: daynauth/jaseci-full:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "3Gi"

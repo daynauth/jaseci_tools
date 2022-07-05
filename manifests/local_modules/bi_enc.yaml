@@ -39,7 +39,7 @@ spec:
         node-network: clarity3
       containers:
         - name: bi-enc-local
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           image: daynauth/jaseci-kit:latest 
           resources:
             requests:

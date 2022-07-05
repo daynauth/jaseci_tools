@@ -18,11 +18,12 @@ metadata:
   namespace: default
 data:
   prod_up: |-
-    uvicorn jaseci_kit.bi_enc:serv_actions --host 0.0.0.0 --port 80
+    cd jaseci/jaseci_kit && sh install.sh
+    uvicorn jaseci_kit.bi_enc:serv_actions --host 0.0.0.0 --port 80 --workers 1
 ---
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: #/usr/local/lib/python3.8/dist-packages
   name: bi-enc
 spec:
   replicas: 1
@@ -40,28 +41,20 @@ spec:
       containers:
         - name: bi-enc
           imagePullPolicy: Always
-          image: daynauth/jaseci-kit:latest 
+          image: daynauth/bi_enc:latest
           env: 
           - name: TRANSFORMERS_OFFLINE
             value: "1"
           resources:
             requests:
               memory: "2Gi"
-            limits:
-              memory: "8Gi"
           command: [bash, -c, "source script/prod_up"]
           ports:
             - containerPort: 80
           volumeMounts:
             - name: prod-script
               mountPath: /script
-            - name: cache
-              mountPath: /root/.cache/huggingface
-
       volumes:
         - name: prod-script
           configMap:
             name: bi-enc-up
-        - name: cache
-          hostPath:
-            path: /home/daynauth/.cache/huggingface
