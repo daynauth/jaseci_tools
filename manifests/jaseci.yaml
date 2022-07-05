@@ -77,11 +77,11 @@ spec:
         node-network: clarity3
       containers:
         - name: jaseci
-          image: daynauth/jaseci-full:latest
+          imagePullPolicy: Always
+          image: daynauth/jaseci_full:latest
           resources:
             requests:
               memory: "1500Mi"
-          imagePullPolicy: IfNotPresent
           command: [bash, -c, "source script/prod_up"]
           ports:
             - containerPort: 80

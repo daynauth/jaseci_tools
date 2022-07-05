@@ -40,7 +40,7 @@ spec:
         node-network: clarity2
       containers:
         - name: summarization
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           image: daynauth/summarization:latest
           resources:
             requests:
