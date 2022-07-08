@@ -56,7 +56,9 @@ data:
   prod_up: |-
     jsserv wait_for_db && jsserv makemigrations base &&
     jsserv makemigrations && jsserv migrate;
-    jsserv runserver 0.0.0.0:80;
+    #jsserv runserver 0.0.0.0:80;
+    cd /jaseci/jaseci_serv/;
+    gunicorn --workers=1 --threads=20 --bind=0.0.0.0:80 --timeout 0 jaseci_serv.jaseci_serv.wsgi
 ---
 apiVersion: apps/v1
 kind: Deployment

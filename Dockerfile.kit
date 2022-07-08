@@ -2,7 +2,7 @@ FROM daynauth/jaseci-core:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install fasttext
+    pip install fasttext gunicorn
 RUN cd jaseci/jaseci_kit && sh install.sh
 RUN pip3 uninstall -y torch
 RUN pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
