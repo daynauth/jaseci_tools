@@ -1,0 +1,20 @@
+FROM nvidia/cuda:11.6.0-cudnn8-devel-ubuntu20.04
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  apt-utils \
+  make \
+  cmake \
+  git \
+  python3-dev \
+  python3-pip \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install fasttext gunicorn
+RUN git clone https://github.com/AshishMahendra/jaseci.git
+RUN cd jaseci/jaseci_core && pip install --no-build-isolation --editable .
+RUN cd jaseci/jaseci_kit && pip install --no-build-isolation --editable .
+RUN pip3 uninstall -y torch
+RUN pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+RUN cd jaseci/jaseci_serv && pip install --no-build-isolation --editable .

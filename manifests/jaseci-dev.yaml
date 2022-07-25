@@ -56,9 +56,8 @@ data:
   prod_up: |-
     jsserv wait_for_db && jsserv makemigrations base &&
     jsserv makemigrations && jsserv migrate;
-    #jsserv runserver 0.0.0.0:80;
     cd /jaseci/jaseci_serv/;
-    gunicorn --workers=2 --threads=2 --bind=0.0.0.0:80 --timeout 0 jaseci_serv.jaseci_serv.wsgi
+    gunicorn --workers=1 --threads=20 --bind=0.0.0.0:80 --timeout 0 jaseci_serv.jaseci_serv.wsgi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -80,7 +79,7 @@ spec:
       containers:
         - name: jaseci
           imagePullPolicy: Always
-          image: daynauth/jaseci_full:latest 
+          image: daynauth/jaseci-full:latest
           resources:
             requests:
               memory: "1500Mi"
@@ -109,7 +108,12 @@ spec:
           volumeMounts:
             - name: prod-script
               mountPath: /script
+            - name: jaseci-path
+              mountPath: /jaseci
       volumes:
+        - name: jaseci-path
+          hostPath:
+            path: /home/roland/ML/jaseci_tools/jaseci/
         - name: prod-script
           configMap:
             name: jaseci-up

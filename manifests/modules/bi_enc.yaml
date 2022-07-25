@@ -23,7 +23,7 @@ data:
 ---
 apiVersion: apps/v1
 kind: Deployment
-metadata: #/usr/local/lib/python3.8/dist-packages
+metadata: 
   name: bi-enc
 spec:
   replicas: 1
