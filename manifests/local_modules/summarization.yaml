@@ -41,11 +41,9 @@ spec:
       containers:
         - name: summarization-local
           imagePullPolicy: Always
-          image: daynauth/jaseci-kit:latest
+          image: daynauth/summarization:latest
           resources:
             requests:
-              memory: "2Gi"
-            limits:
               memory: "2Gi"
           command: [bash, -c, "source script/prod_up"]
           ports:
@@ -53,7 +51,6 @@ spec:
           volumeMounts:
             - name: prod-script
               mountPath: /script
-
       volumes:
         - name: prod-script
           configMap:

@@ -40,11 +40,11 @@ spec:
         node-network: clarity3
       containers:
         - name: js-use-enc-local
-          imagePullPolicy: Always
-          image: daynauth/jaseci-kit:latest
+          imagePullPolicy: IfNotPresent
+          image: daynauth/use_enc:latest
           resources:
             requests:
-              memory: "100Mi"
+              memory: "1Gi"
           command: [bash, -c, "source script/prod_up"]
           ports:
             - containerPort: 80

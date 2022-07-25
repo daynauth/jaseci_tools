@@ -39,11 +39,14 @@ spec:
         node-network: clarity3
       containers:
         - name: flair-ner-local
-          imagePullPolicy: Always
-          image: daynauth/jaseci-kit:latest 
+          imagePullPolicy: IfNotPresent
+          image: daynauth/flair:latest 
+          env: 
+          - name: TRANSFORMERS_OFFLINE
+            value: "1"
           resources:
             requests:
-              memory: "100Mi"
+              memory: "500Mi"
           command: [bash, -c, "source script/prod_up"]
           ports:
             - containerPort: 80

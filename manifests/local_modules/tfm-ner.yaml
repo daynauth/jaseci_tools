@@ -41,12 +41,15 @@ spec:
       containers:
         - name: tfm-ner-local
           imagePullPolicy: Always
-          image: daynauth/jaseci-kit:latest
+          image: daynauth/tfm-ner:latest
+          env: 
+          - name: TRANSFORMERS_OFFLINE
+            value: "1"
           resources:
             requests:
               memory: "3Gi"
             limits:
-              memory: "3Gi"
+              memory: "8Gi"
           command: [bash, -c, "source script/prod_up"]
           ports:
             - containerPort: 80

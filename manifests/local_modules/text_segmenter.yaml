@@ -40,13 +40,13 @@ spec:
         node-network: clarity3
       containers:
         - name: js-segmenter-local
-          imagePullPolicy: Always
-          image: daynauth/jaseci-kit:latest
+          image: daynauth/text_segmenter
+          env: 
+          - name: TRANSFORMERS_OFFLINE
+            value: "1"
           resources:
             requests:
-              memory: "3Gi"
-            limits:
-              memory: "3Gi"
+              memory: "500Mi"
           command: [bash, -c, "source script/prod_up"]
           ports:
             - containerPort: 80
